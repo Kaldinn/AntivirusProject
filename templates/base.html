@@ -3,36 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/style.css">
     <title>Antivirus</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-          crossorigin="anonymous">
 </head>
 <body>
 
-<div class="container mt-5">
-    <h1 class="mb-4">Flask App</h1>
-
-    <div class="mb-4">
-        <h5>Aktualny katalog:</h5>
-        <p>{{ path }}</p>
+<nav>
+    <div class="navbar">
+        <h1>Antivirus</h1>
     </div>
+</nav>
 
-    <div>
-        <h5>Lista plików:</h5>
-        <pre>{{ result }}</pre>
+<div class="container">
+    <div id="input-file">
+        <input type="file" id="fileInput">
     </div>
 </div>
-
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
-        integrity="sha384-5YWkO80Y6A9MlwAeHpzyTjw6RyV1nT+RVewNjwE97LAMeBz56C1v9L5VK2TA"
-
-        crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYfG6s4YUz8TIeUqjEghFjF5l/+nVIR2Iz3n13U3vgF"
-        crossorigin="anonymous"></script>
 </body>
 </html>
+
+<script>
+    const fileInput = document.getElementById('fileInput');
+
+    fileInput.addEventListener('change', function() {
+        const selectedFile = fileInput.files[0];
+
+        console.log('Nazwa pliku:', selectedFile.name);
+        console.log('Typ pliku:', selectedFile.type);
+        console.log('Rozmiar pliku:', selectedFile.size, 'bajtów');
+    });
+</script>

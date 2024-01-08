@@ -1,5 +1,5 @@
 from flask import Flask, render_template
-from services.file_operations import display_files, display_current_path
+import services.file_operations as Operations
 import os
 
 app = Flask(__name__)
@@ -7,8 +7,8 @@ app = Flask(__name__)
 @app.route('/')
 def index():
     command = "dir /B /A:-D /N;"
-    result = display_files(command)
-    path = display_current_path()
+    result = Operations.display_files(command)
+    path = Operations.display_current_path()
 
     return render_template(
         'base.html',

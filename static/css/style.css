@@ -1,0 +1,20 @@
+.navbar{
+    display: flex;
+    justify-content: center;
+    background-color: black;
+    font-size: 3vh;
+}
+.navbar h1{
+    color: rgb(22, 188, 16);
+}
+
+.container{
+    display: flex;
+    justify-content: center;
+}
+
+#drop_zone {
+    border: 5px solid blue;
+    width: 200px;
+    height: 100px;
+  }
