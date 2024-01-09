@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/static/css/style.css">
+    <script src="/static/js/app.js"></script>
     <title>Antivirus</title>
 </head>
 <body>
@@ -15,21 +16,15 @@
 </nav>
 
 <div class="container">
-    <div id="input-file">
-        <input type="file" id="fileInput">
-    </div>
+    <form id="scanForm">
+        <label for="directory">Directory to Scan:</label>
+        <input type="text" id="directory" name="directory" placeholder="/path/to/directory">
+        <button type="button" onclick="scanComputer()">Skanuj katalog</button>
+    </form>
+
+    <div id="file-info"></div>
+</div>
 </div>
 </body>
 </html>
 
-<script>
-    const fileInput = document.getElementById('fileInput');
-
-    fileInput.addEventListener('change', function() {
-        const selectedFile = fileInput.files[0];
-
-        console.log('Nazwa pliku:', selectedFile.name);
-        console.log('Typ pliku:', selectedFile.type);
-        console.log('Rozmiar pliku:', selectedFile.size, 'bajtów');
-    });
-</script>
