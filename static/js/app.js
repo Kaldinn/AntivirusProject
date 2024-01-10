@@ -1,24 +1,19 @@
 document.addEventListener("DOMContentLoaded", (event) => {
 
 
-  });
+})
 
-  function scanComputer() {
-    const directoryInput = document.getElementById('directory');
-    const directory = directoryInput.value;
+async function getData() {
+    const fileInput = document.getElementById('file');
+    const formData = new FormData();
+    formData.append('file', fileInput.files[0]);
 
-    fetch('/scan', {
+    const response = await fetch('/scan', {
         method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ directory }),
-    })
-    .then(response => response.json())
-    .then(data => {
-        console.log(data);
-    })
-    .catch(error => {
-        console.error('Błąd podczas skanowania:', error);
+        body: formData
     });
+
+    const data = await response.json();
+    console.log(data)
+    document.getElementById('file-content').innerText = data.file_content;
 }

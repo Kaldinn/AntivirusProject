@@ -5,21 +5,24 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-    x = scan_directory("C:/")
-    print(x)
     return render_template('base.html')
-    
 
 @app.route('/scan', methods=['POST'])
 def scan():
-    data = request.json
-    directory_to_scan = data.get('directory', '/path/to/default/directory')
+    uploaded_file = request.files['file']
+    file_content = uploaded_file.read()
+    
+    file_hash = calculate_file_hash(file_content)
+    scan_result = scan_file_content(file_content)
 
-    try:
-        scan_results = scan_directory(directory_to_scan)
-        return jsonify({'status': 'success', 'results': scan_results})
-    except Exception as e:
-        return jsonify({'status': 'error', 'error_message': str(e)})
+    return jsonify(
+        {
+            'status': 'success',
+            'file_name': uploaded_file.filename,
+            'hash': file_hash,
+            'scan_result': scan_result,
+            'file_content': file_content.decode('utf-8')
+        })
 
 if __name__ == '__main__':
     app.run(debug=True)
