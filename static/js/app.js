@@ -1,6 +1,5 @@
 document.addEventListener("DOMContentLoaded", (event) => {
 
-
 })
 
 async function getData() {

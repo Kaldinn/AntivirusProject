@@ -10,12 +10,11 @@ def scan_file_clamav(file_path):
     scan_result = cd.scan_file(file_path)
     return scan_result
 
-def calculate_file_hash(file_path):
+def calculate_file_hash(file_content):
     hasher = hashlib.md5()
-    with open(file_path, 'rb') as file:
-        while chunk := file.read(8192):
-            hasher.update(chunk)
+    hasher.update(file_content.encode('utf-8'))
     return hasher.hexdigest()
+
 
 def scan_file_content(content):
     keywords = ['malware', 'virus', 'threat', 'dangerous']

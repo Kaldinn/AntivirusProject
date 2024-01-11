@@ -11,7 +11,6 @@ def index():
 def scan():
     uploaded_file = request.files['file']
     file_content = uploaded_file.read()
-    
     file_hash = calculate_file_hash(file_content)
     scan_result = scan_file_content(file_content)
 
